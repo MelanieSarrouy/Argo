@@ -1,0 +1,14 @@
+/* media queries */ 
+
+@mixin respond-to($media) {
+  @if $media == small {
+    @media all and (max-width: $mobile) {
+      @content;
+    }
+  }
+  @if $media == medium {
+    @media (min-width: $mobile) {  
+      @content; 
+    }
+  }
+}
