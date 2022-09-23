@@ -1,58 +1,48 @@
 import React from 'react'
 import { useState } from 'react'
 
-const AddForm = ({ setAdd, add }) => {
-    const [name, setName] = useState('')
-    const [age, setAge] = useState(0)
-    const [role, setRole] = useState('')
-    const [qualification, setQualification] = useState('')
-    const [error, setError] = useState(false)
+const UpdateForm = ({ setAdd, add, setModal, member }) => {
+  const [name, setName] = useState(member.name)
+  const [age, setAge] = useState(member.age)
+  const [role, setRole] = useState(member.role)
+  const [qualification, setQualification] = useState(member.qualification)
 
-    const handleChangeName = (e) => {
-      setError(false)
-      setName(e.target.value)
-    }
-    const handleChangeAge = (e) => {
-      setAge(e.target.value)
-    }
-    const handleChangeRole = (e) => {
-      setRole(e.target.value)
-    }
-    const handleChangeQualification = (e) => {
-      setQualification(e.target.value)
-    }
-    const handleSubmit = async (e) => {
-      e.preventDefault()
-      if (name !== '') {
-        await addArgo({ name: name, age: age, role: role, qualification: qualification })
-        setName('')
-        setAge(0)
-        setRole('')
-        setQualification('')
-      } else {
-        setError(true)
-      }
-    }
+  const handleChangeName = (e) => {
+    setName(e.target.value)
+  }
+  const handleChangeAge = (e) => {
+    setAge(e.target.value)
+  }
+  const handleChangeRole = (e) => {
+    setRole(e.target.value)
+  }
+  const handleChangeQualification = (e) => {
+    setQualification(e.target.value)
+  }
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    await updateArgo({ name: name, age: age, role: role, qualification: qualification })
+    setName(member.name)
+    setAge(member.age)
+    setRole(member.role)
+    setQualification(member.qualification)
+  }
 
-  const addArgo = async (values) => {
-    await fetch('/api/argonautes', {
+  const updateArgo = async (values) => {
+    await fetch(`/api/argonautes/${member._id}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      method: 'POST',
+      method: 'PATCH',
       body: JSON.stringify(values),
     })
     setAdd(!add)
+    setModal(false)
   }
 
   return (
-    <form action="" method="get" className="form">
-      {error && (
-        <div className="form__div--error">
-          <p>Merci de renseigner le nom de l'Argonaute</p>
-        </div>
-      )}
+    <form action="" method="patch" className="form">
       <div className="form__div">
         <label htmlFor="name" name="name" className="form__div__label">
           Nom de l'Argonaute :
@@ -62,7 +52,7 @@ const AddForm = ({ setAdd, add }) => {
           name="name"
           id="name"
           className="form__div__input"
-          placeholder="Name"
+          placeholder={name}
           required={true}
           value={name}
           onChange={handleChangeName}
@@ -79,7 +69,7 @@ const AddForm = ({ setAdd, add }) => {
           className="form__div__input"
           min={12}
           max={120}
-          placeholder={18}
+          placeholder={age}
           value={age}
           onChange={handleChangeAge}
         />
@@ -93,7 +83,7 @@ const AddForm = ({ setAdd, add }) => {
           name="role"
           id="role"
           className="form__div__input"
-          placeholder="Capitaine"
+          placeholder={role}
           value={role}
           onChange={handleChangeRole}
         />
@@ -107,7 +97,7 @@ const AddForm = ({ setAdd, add }) => {
           name="qualification"
           id="qualification"
           className="form__div__input"
-          placeholder="Force, courage, volonté, cupidité"
+          placeholder={qualification}
           value={qualification}
           onChange={handleChangeQualification}
         />
@@ -121,4 +111,4 @@ const AddForm = ({ setAdd, add }) => {
   )
 }
 
-export default AddForm
+export default UpdateForm

@@ -4,28 +4,25 @@ import mongoose from "mongoose"
 const ArgonauteSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
     trim: true,
     lowercase: true
   },
   age: {
     type: Number,
-    default: 1,
-    validate: value => {
-      if (value <= 0) {
-        throw new Error('L\'Argonaute doit être né !')
-      }
-    }
+    // default: 1,
+    // validate: value => {
+    //   if (value <= 0) {
+    //     throw new Error('L\'Argonaute doit être né !')
+    //   }
+    // }
   },
   role: {
     type: String,
-    required: true,
     trim: true,
     lowercase: true
   },
   qualification: {
     type: String,
-    required: true,
     trim: true,
     lowercase: true
   }

@@ -1,1 +1,31 @@
+
+###
+
 GET http://localhost:5000/api/argonautes
+
+###
+
+POST http://localhost:5000/api/argonautes HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Mel",
+  "age": 40,
+  "role": "Capitaine",
+  "qualification": "Chanceuse"
+}
+
+###
+
+PATCH http://localhost:5000/api/argonautes/632dbdee1a96feac53f65cfc HTTP/1.1
+content-type: application/json
+
+{
+  "qualification": "Patience, Force"
+}
+
+###
+
+DELETE http://localhost:5000/api/argonautes/632dacdf1a96feac53f65c65
+
+###

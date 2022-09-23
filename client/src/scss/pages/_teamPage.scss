@@ -32,5 +32,102 @@
         background-color: lighten($color-primary, 30%);
       }
     }
+    &--error {
+      color: red;
+      font-size: .9rem;
+      text-align: right;
+    }
+  }
+}
+table {
+  width: 80%;
+  text-transform: uppercase;
+  margin-bottom: 4rem;
+}
+thead {
+  background-color: $color-primary;
+  border: 1px solid $color-primary;
+}
+th {
+  padding: 0.5rem;
+  color: $color-neutral;
+}
+tbody {
+  border-right: 1px solid $color-primary;
+  border-left: 1px solid $color-primary;
+}
+td:nth-child(even) {
+  background-color: lighten($color-primary, 30%);
+  color: $color-neutral;
+}
+td:nth-child(odd) {
+  background-color: $color-neutral;
+  color: $color-font-dark;
+}
+.td {
+  text-transform: capitalize;
+  padding: 0.5rem;
+  text-align: center;
+  border-bottom: 1px solid $color-primary;
+  
+  &:nth-child(2) {
+    font-weight: 500;
+    font-size: 1.2rem;
+  }
+  &__button {
+    color: $color-primary;
+    text-align: center;
+    border-bottom: 1px solid $color-primary;
+    font-size: 1.4rem;
+    &:nth-child(6) {
+      color: green;
+      background-color: $color-neutral;
+    }
+    &:last-child {
+      color: red;
+      background-color: $color-neutral;
+    }
+    &__div {
+      cursor: pointer;
+      background-color: $color-neutral;
+      margin: 0.4rem 0.5rem 0.4rem 0;
+      padding: 0.5rem;
+      border-radius: 12px;
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+      transform: scale(1);
+      transition: transform 200ms ease-in-out;
+      &:hover {
+        background-color: lighten($color-primary, 30%);
+        transform: scale(1.05);
+        color: $color-neutral;
+        border: none;
+      }
+    }
+  }
+}
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  background-color: rgba(0,0,0,.9);
+  &__content {
+    background-color: $color-background;
+    padding: 0 2rem;
+    border-radius: 1rem;
+    box-shadow: 4px 4px 4px rgba(0,0,0,.7);
+    position: relative;
+    &--close {
+      font-size: 3rem;
+      color: $color-primary;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      cursor: pointer;
+    }
   }
 }
