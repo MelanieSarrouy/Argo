@@ -3,13 +3,13 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 // components imports
 import Header from './layout/Header'
-// styles imports
-import './css/styles.min.css'
 import HomePage from './pages/HomePage'
 import TeamPage from './pages/TeamPage'
 import HeroesPage from './pages/HeroesPage'
 import InventoryPage from './pages/InventoryPage'
 import ContactPage from './pages/ContactPage'
+// styles imports
+import './css/styles.min.css'
 
 const App = () => {
   return (
