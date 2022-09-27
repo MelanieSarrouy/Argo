@@ -6,7 +6,6 @@ import TeamList from '../components/TeamList'
 import UpdateForm from '../components/UpdateForm'
 import { IoIosCloseCircleOutline } from 'react-icons/io'
 
-
 const TeamPage = () => {
   const [team, setTeam] = useState([])
   const [add, setAdd] = useState(false)
@@ -37,12 +36,22 @@ const TeamPage = () => {
         </div>
       )}
       <h1>Les Argonautes</h1>
-      <h2>Ajouter un(e) Argonaute</h2>
-      <hr />
-      <AddForm setAdd={setAdd} add={add} />
-      <h2>Membres de l'équipage</h2>
-      <hr />
-      <TeamList setAdd={setAdd} add={add} team={team} setMember={setMember} setModal={setModal} />
+      <section className="argonautes__add">
+        <h2>Ajouter un(e) Argonaute</h2>
+        <hr />
+        <AddForm setAdd={setAdd} add={add} />
+      </section>
+      <section className="argonautes__list">
+        <h2>Membres de l'équipage</h2>
+        <hr />
+          <TeamList
+            setAdd={setAdd}
+            add={add}
+            team={team}
+            setMember={setMember}
+            setModal={setModal}
+          />
+      </section>
     </main>
   )
 }

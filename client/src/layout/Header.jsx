@@ -1,8 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../assets/index.png'
+import Nav from '../components/Nav'
+import { MdOutlineMenu } from 'react-icons/md'
+import { useState } from 'react'
 
 const Header = () => {
+  const [displayNav, setDisplayNav] = useState(false)
   return (
     <header className="header">
       <div className="header__logoDiv">
@@ -10,35 +14,13 @@ const Header = () => {
           <img src={logo} alt="logo de l'Argo" className="header__logo" />
         </Link>
       </div>
-      <nav className="nav">
-        <ul className="nav__list">
-          <li className="nav__list__item">
-            <Link to="/" className="navLink">
-              Accueil
-            </Link>
-          </li>
-          <li className="nav__list__item">
-            <Link to="/team" className="navLink">
-              Equipage
-            </Link>
-          </li>
-          <li className="nav__list__item">
-            <Link to="/heroes" className="navLink">
-              Héros
-            </Link>
-          </li>
-          <li className="nav__list__item">
-            <Link to="/inventory" className="navLink">
-              Inventaire
-            </Link>
-          </li>
-          <li className="nav__list__item">
-            <Link to="/contact" className="navLink">
-              Contact
-            </Link>
-          </li>
-        </ul>
-      </nav>
+      <div className="header__burger" onClick={() => setDisplayNav(!displayNav)}>
+        <MdOutlineMenu className="header__burger__icon" />
+        {displayNav && <Nav />}
+      </div>
+      <div className="header__desktop">
+        <Nav />
+      </div>
     </header>
   )
 }
